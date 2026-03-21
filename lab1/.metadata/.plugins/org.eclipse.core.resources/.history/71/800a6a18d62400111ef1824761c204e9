@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>三国演义 - 在线阅读</title>
+    <link rel="stylesheet" href="css/base.css" id="base-style">
+    <link rel="stylesheet" href="css/light.css" id="theme-style">
+</head>
+<body>
+    <!-- 样式切换下拉框 -->
+    <select class="style-switcher" onchange="switchStyle(this.value)">
+        <option value="light">浅色风格</option>
+        <option value="dark">深色风格</option>
+        <option value="retro">复古风格</option>
+    </select>
+
+    <div class="container">
+        <!-- 书籍基础信息 -->
+        <div class="book-info">
+            <img src="images/cover.png" alt="三国演义封面">
+            <h1>三国演义</h1>
+            <div class="author">明 · 罗贯中</div>
+            <div class="intro">
+                <p>《三国演义》（全名为《三国志通俗演义》）是元末明初小说家罗贯中创作的长篇章回体历史演义小说，为中国古典四大名著之一。</p>
+                <p>小说以三国时期的历史为蓝本，描写了从东汉末年到西晋初年近百年的历史风云，塑造了曹操、刘备、关羽、诸葛亮、吕布等一众叱咤风云的英雄人物，展现了三国鼎立时期复杂的政治、军事斗争，反映了“分久必合，合久必分”的历史规律。</p>
+            </div>
+        </div>
+
+        <!-- 章节目录 -->
+        <h2 class="chapter-title">目录（前五回）</h2>
+        <ul class="chapter-list">
+            <li><a href="chapters/chapter1.html">第一回 宴桃园豪杰三结义 斩黄巾英雄首立功</a></li>
+            <li><a href="chapters/chapter2.html">第二回 张翼德怒鞭督邮 何国舅谋诛宦竖</a></li>
+            <li><a href="chapters/chapter3.html">第三回 议温明董卓叱丁原 馈金珠李肃说吕布</a></li>
+            <li><a href="chapters/chapter4.html">第四回 废汉帝陈留践位 谋董贼孟德献刀</a></li>
+            <li><a href="chapters/chapter5.html">第五回 发矫诏诸镇应曹公 破关兵三英战吕布</a></li>
+        </ul>
+    </div>
+
+    <!-- 字体大小控制（选做） -->
+    <div class="font-control">
+        <button onclick="adjustFont('smaller')">字体缩小</button>
+        <button onclick="adjustFont('bigger')">字体放大</button>
+    </div>
+
+    <script>
+        // 切换显示风格
+        function switchStyle(styleName) {
+            const themeLink = document.getElementById('theme-style');
+            themeLink.href = `css/${styleName}.css`;
+        }
+
+        // 调整字体大小
+        function adjustFont(type) {
+            const body = document.body;
+            const currentSize = parseFloat(getComputedStyle(body).fontSize);
+            body.style.fontSize = type === 'bigger' ? (currentSize + 1) + 'px' : (currentSize - 1) + 'px';
+        }
+    </script>
+</body>
+</html>

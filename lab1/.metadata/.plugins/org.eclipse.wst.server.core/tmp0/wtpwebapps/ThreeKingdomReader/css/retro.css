@@ -1,0 +1,46 @@
+body {
+    background-color: #f5f0e1;
+    color: #8b4513;
+    font-family: "STKaiti", "SimHei", serif;
+}
+
+.book-info h1 {
+    font-family: "STSong", serif;
+    color: #800000;
+}
+
+.chapter-list li {
+    border: 1px solid #d2b48c;
+}
+
+.chapter-list li:hover {
+    background-color: #e8d8c0;
+}
+
+.chapter-list a {
+    color: #8b4513;
+}
+
+.chapter-list a:hover {
+    color: #b22222;
+}
+
+.back-link {
+    background-color: #cd853f;
+    color: white;
+    border: 1px solid #8b4513;
+}
+
+.back-link:hover {
+    background-color: #b8860b;
+}
+
+.chapter-content {
+    font-family: "STKaiti", serif;
+}
+
+.font-control button {
+    background-color: #deb887;
+    color: #8b4513;
+    border: 1px solid #8b4513;
+}

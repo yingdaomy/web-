@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第一回 宴桃园豪杰三结义 斩黄巾英雄首立功 - 三国演义</title>
+    <link rel="stylesheet" href="../css/base.css" id="base-style">
+    <link rel="stylesheet" href="../css/light.css" id="theme-style">
+</head>
+<body>
+    <!-- 样式切换下拉框 -->
+    <select class="style-switcher" onchange="switchStyle(this.value)">
+        <option value="light">浅色风格</option>
+        <option value="dark">深色风格</option>
+        <option value="retro">复古风格</option>
+    </select>
+
+    <div class="container">
+        <!-- 章节标题 -->
+        <div class="chapter-header">
+            <h1>第一回 宴桃园豪杰三结义 斩黄巾英雄首立功</h1>
+            <div>《三国演义》 - 明 · 罗贯中</div>
+        </div>
+
+        <!-- 章节插图 -->
+        <div class="chapter-img">
+            <img src="../images/chapter1.jpg" alt="桃园三结义">
+            <p>插图：桃园三结义（刘备、关羽、张飞）</p>
+        </div>
+
+        <!-- 章节内容 -->
+        <div class="chapter-content">
+            <p>话说天下大势，分久必合，合久必分。周末七国分争，并入于秦。及秦灭之后，楚、汉分争，又并入于汉。汉朝自高祖斩白蛇而起义，一统天下，后来光武中兴，传至献帝，遂分为三国。推其致乱之由，殆始于桓、灵二帝。</p>
+            <p>桓帝禁锢善类，崇信宦官。及桓帝崩，灵帝即位，大将军窦武、太傅陈蕃，共相辅佐。时有宦官曹节等弄权，窦武、陈蕃谋诛之，机事不密，反为所害，中涓自此愈横。</p>
+            <p>建宁二年四月望日，帝御温德殿。方升座，殿角狂风骤起。只见一条大青蛇，从梁上飞将下来，蟠于椅上。帝惊倒，左右急救入宫，百官俱奔避。须臾，蛇不见了。忽然大雷大雨，加以冰雹，落到半夜方止，坏却房屋无数。</p>
+            <p>建宁四年二月，洛阳地震；又海水泛溢，沿海居民，尽被大浪卷入海中。光和元年，雌鸡化雄。六月朔，黑气十余丈，飞入温德殿中。秋七月，有虹现于玉堂；五原山岸，尽皆崩裂。种种不祥，非止一端。</p>
+            <p>帝下诏问群臣以灾异之由，议郎蔡邕上疏，以为蜺堕鸡化，乃妇寺干政之所致，言颇切直。帝览奏叹息，因起更衣。曹节在后窃视，悉宣告左右；遂以他事陷邕于罪，放归田里。</p>
+            <p>后张让、赵忠、封谞、段珪、曹节、侯览、蹇硕、程旷、夏恽、郭胜十人朋比为奸，号为“十常侍”。帝尊信张让，呼为“阿父”。朝政日非，以致天下人心思乱，盗贼蜂起。</p>
+            <p>（内容节选，完整内容请查阅原著）</p>
+        </div>
+
+        <!-- 返回目录 -->
+        <a href="../index.html" class="back-link">← 返回目录页</a>
+        <a href="chapter2.html" class="back-link" style="margin-left: 20px;">下一章 →</a>
+    </div>
+
+    <!-- 字体大小控制 -->
+    <div class="font-control">
+        <button onclick="adjustFont('smaller')">字体缩小</button>
+        <button onclick="adjustFont('bigger')">字体放大</button>
+    </div>
+
+    <script>
+        function switchStyle(styleName) {
+            const themeLink = document.getElementById('theme-style');
+            themeLink.href = `../css/${styleName}.css`;
+        }
+
+        function adjustFont(type) {
+            // 控制全局基础字体（标题等）
+            const body = document.body;
+            const currentBodySize = parseFloat(getComputedStyle(body).fontSize);
+            const newBodySize = type === 'bigger' ? (currentBodySize + 1) : (currentBodySize - 1);
+            // 限制字体大小范围（避免过大/过小）
+            if (newBodySize >= 12 && newBodySize <= 24) {
+                body.style.fontSize = newBodySize + 'px';
+                
+                // 控制正文字体
+                const contentElements = document.querySelectorAll('.chapter-content');
+                contentElements.forEach(el => {
+                    el.style.fontSize = newBodySize + 'px';
+                });
+                
+                // 目录页章节列表字体也同步调整
+                const chapterListElements = document.querySelectorAll('.chapter-list a');
+                chapterListElements.forEach(el => {
+                    el.style.fontSize = (newBodySize + 2) + 'px';
+                });
+            }
+        }
+    </script>
+</body>
+</html>

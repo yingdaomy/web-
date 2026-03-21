@@ -1,0 +1,38 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.book-info, .chapter-header {
+    border-bottom-color: #333;
+}
+
+.chapter-list li:hover {
+    background-color: #1e1e1e;
+}
+
+.chapter-list a {
+    color: #bb86fc;
+}
+
+.chapter-list a:hover {
+    color: #4fc3f7;
+}
+
+.back-link {
+    background-color: #263238;
+    color: #ffffff;
+}
+
+.back-link:hover {
+    background-color: #37474f;
+}
+
+.font-control button {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.font-control button:hover {
+    background-color: #2d2d2d;
+}
