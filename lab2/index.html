@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>热气球环游世界</title>
+  <link href="./Cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <style>
+    html, body, #cesiumContainer {
+      width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+    }
+    #menu {
+      position: absolute; top: 20px; left: 20px;
+      background: rgba(42, 42, 42, 0.85);
+      padding: 15px; border-radius: 8px;
+      color: white; font-family: "Microsoft YaHei", sans-serif;
+      z-index: 100; border: 1px solid #555;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .option { margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; }
+    .option input { margin-right: 10px; cursor: pointer; }
+    h3 { margin-top: 0; font-size: 18px; border-bottom: 1px solid #777; padding-bottom: 8px; color: #00d2ff; }
+    .controls-hint { 
+      margin-top: 10px; padding-top: 10px; border-top: 1px dashed #666; 
+      font-size: 12px; color: #ccc; line-height: 1.6;
+    }
+    .key { background: #555; padding: 2px 5px; border-radius: 3px; color: #fff; margin: 0 2px; }
+  </style>
+</head>
+<body>
+
+  <div id="menu">
+    <h3>热气球环游控制台</h3>
+    <div class="option">
+      <input type="radio" name="scenery" id="yulong" onclick="flyTo(100.23, 27.13, 4500)" checked>
+      <label for="yulong">玉龙雪山 (中国)</label>
+    </div>
+    <div class="option">
+      <input type="radio" name="scenery" id="greatwall" onclick="flyTo(116.02, 40.35, 1200)">
+      <label for="greatwall">八达岭长城 (中国)</label>
+    </div>
+    <div class="option">
+      <input type="radio" name="scenery" id="pinqing" onclick="flyTo(115.35, 22.78, 1500)">
+      <label for="pinqing">品清湖 (中国)</label>
+    </div>
+    <div class="option">
+      <input type="radio" name="scenery" id="fuji" onclick="flyTo(138.72, 35.36, 3800)">
+      <label for="fuji">富士山 (日本)</label>
+    </div>
+
+
+    <div class="controls-hint">
+      <strong>操作说明：</strong><br>
+      移动：<span class="key">W</span> <span class="key">S</span> <span class="key">A</span> <span class="key">D</span> 或方向键<br>
+      升降：<span class="key">Q</span> 上升 / <span class="key">E</span> 降落
+    </div>
+  </div>
+
+  <div id="cesiumContainer"></div>
+
+  <script src="./Cesium/Build/Cesium/Cesium.js"></script>
+
+
+  <script>
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNzE5NTYxZS02NGVlLTRhYWItYWZlNy0xYTRiMjE2MGNlYWMiLCJpZCI6NDE2NzQ2LCJpYXQiOjE3NzU4OTk2OTB9.3Qn1LleKL5R_bxAE7nIhB2y4dBieHWZcsXiaoZxYmbI';
+
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrainProvider: Cesium.createWorldTerrain(), 
+      baseLayerPicker: true,
+      navigationHelpButton: false,
+      fullscreenButton: false,
+      animation: false, 
+      timeline: false   
+    });
+
+    const balloon = viewer.entities.add({
+      name: '环游热气球',
+      position: Cesium.Cartesian3.fromDegrees(100.23, 27.13, 4000),
+      model: {
+        uri: './Cesium/Apps/SampleData/models/CesiumBalloon/CesiumBalloon.glb',
+        minimumPixelSize: 128,
+        maximumScale: 20000
+      }
+    });
+
+    viewer.trackedEntity = balloon;
+
+    function flyTo(lon, lat, height) {
+      const position = Cesium.Cartesian3.fromDegrees(lon, lat, height);
+      balloon.position = position;
+      
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(lon, lat, height + 800),
+        duration: 3
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const curPos = balloon.position.getValue(viewer.clock.currentTime);
+      if (!curPos) return;
+
+      const carto = Cesium.Cartographic.fromCartesian(curPos);
+      
+      let lon = Cesium.Math.toDegrees(carto.longitude);
+      let lat = Cesium.Math.toDegrees(carto.latitude);
+      let alt = carto.height;
+
+      const step = 0.0005; 
+      const altStep = 30;  
+
+      switch(e.key.toLowerCase()) {
+
+        case 'arrowup': case 'w': lat += step; break;
+        case 'arrowdown': case 's': lat -= step; break;
+        case 'arrowleft': case 'a': lon -= step; break;
+        case 'arrowright': case 'd': lon += step; break;
+        
+
+        case 'q': 
+          alt += altStep; 
+          console.log("上升中，当前高度:", alt);
+          break;
+        case 'e': 
+          alt = Math.max(0, alt - altStep); 
+          console.log("降落中，当前高度:", alt);
+          break;
+      }
+
+      balloon.position = Cesium.Cartesian3.fromDegrees(lon, lat, alt);
+    });
+  </script>
+</body>
+</html>
