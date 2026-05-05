@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servlet实验 - 杨辉三角 & MD5散列值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+        }
+
+        .card-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .card-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 200px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: monospace;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .example {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .example strong {
+            color: #667eea;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ccc, transparent);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 实验一：杨辉三角 -->
+    <div class="card">
+        <div class="card-header">
+            <h1>🔺 实验一：杨辉三角</h1>
+            <p>生成n阶杨辉三角，支持自定义阶数</p>
+        </div>
+        <div class="card-body">
+            <form action="yanghui" method="post">
+                <div class="form-group">
+                    <label for="order">请输入阶数 (1-20):</label>
+                    <input type="number" id="order" name="order" min="1" max="20" value="10">
+                </div>
+                <button type="submit">生成杨辉三角</button>
+            </form>
+            <div class="example">
+                <strong>示例：</strong> 输入10，生成10阶杨辉三角
+            </div>
+        </div>
+    </div>
+
+    <!-- 实验二：MD5散列值 -->
+    <div class="card">
+        <div class="card-header">
+            <h1>🔐 实验二：MD5散列值</h1>
+            <p>计算任意文本的MD5散列值（哈希值）</p>
+        </div>
+        <div class="card-body">
+            <form action="hash" method="post">
+                <div class="form-group">
+                    <label for="inputText">请输入文本:</label>
+                    <textarea id="inputText" name="inputText" rows="4"
+                              placeholder="在这里输入你想计算MD5散列值的文字..."></textarea>
+                </div>
+                <button type="submit">计算MD5散列值</button>
+            </form>
+            <div class="example">
+                <strong>💡 实验提示：</strong> 尝试修改一个字符，观察MD5散列值的巨大变化！
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
