@@ -1,0 +1,329 @@
+/* ========== 全局样式 & 重置 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f0f4fa 0%, #e2e8f0 100%);
+    min-height: 100vh;
+}
+
+/* ========== 登录页面专属样式 ========== */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #eef2f9 0%, #dfe6ef 100%);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 1.5rem;
+}
+
+.login-card {
+    background: white;
+    border-radius: 2rem;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    transition: transform 0.2s;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.login-header h1 {
+    font-size: 1.9rem;
+    background: linear-gradient(135deg, #1e2f5e, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.input-field {
+    margin-bottom: 1.25rem;
+}
+
+.input-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #1e293b;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 1rem;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.btn-login {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-login:hover {
+    background: #2563eb;
+    transform: scale(0.98);
+}
+
+.test-accounts {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    background: #f8fafc;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    color: #475569;
+}
+
+.test-accounts ul {
+    margin-top: 0.3rem;
+    padding-left: 1.2rem;
+}
+
+/* ========== 主应用样式 ========== */
+.app-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.app-header {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e2f5e, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: #5b6e8c;
+    display: block;
+}
+
+.user-panel {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 0.5rem 1.2rem;
+    border-radius: 3rem;
+}
+
+.username-badge {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    background: #fee2e2;
+}
+
+.logout-btn-link {
+    text-decoration: none;
+}
+
+/* Tab 导航 */
+.tab-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.3rem;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    cursor: pointer;
+    color: #475569;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+}
+
+.tab-btn:hover:not(.active) {
+    background: #e2e8f0;
+}
+
+/* 内容卡片 */
+.main-content {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    min-height: 55vh;
+}
+
+/* 成员网格 */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.member-card {
+    background: #f8fafc;
+    border-radius: 1.25rem;
+    padding: 1.3rem;
+    border: 1px solid #eef2f6;
+    transition: 0.2s;
+}
+
+.member-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+}
+
+.member-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.member-role {
+    display: inline-block;
+    background: #dbeafe;
+    padding: 0.2rem 0.7rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    color: #1e40af;
+    margin: 0.5rem 0;
+}
+
+.member-bio {
+    color: #334155;
+    line-height: 1.45;
+    font-size: 0.9rem;
+}
+
+/* 项目规划 - 进度条 */
+.phase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.phase-card {
+    border-left: 4px solid #3b82f6;
+    background: #fefefe;
+    padding: 0.9rem 1.2rem;
+    border-radius: 1rem;
+}
+
+.phase-title {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.progress-bar {
+    background: #e2e8f0;
+    border-radius: 1rem;
+    height: 8px;
+    margin: 0.6rem 0;
+}
+
+.progress-fill {
+    background: #3b82f6;
+    width: 0%;
+    height: 8px;
+    border-radius: 1rem;
+}
+
+.status-badge {
+    font-size: 0.7rem;
+    background: #dcfce7;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    color: #15803d;
+}
+
+.app-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #5b6e8c;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+    .app-wrapper {
+        padding: 1rem;
+    }
+    .app-header {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: start;
+    }
+}
